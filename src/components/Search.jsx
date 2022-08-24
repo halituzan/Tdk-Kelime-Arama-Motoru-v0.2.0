@@ -18,7 +18,7 @@ export default function Search({ soz }) {
       }
     }
   };
-  const { proverbs } = soz;
+  const proverbs = soz?.proverbs;
   const provbs = proverbs?.filter((pvb) => pvb.turu2 === "Atasözü");
   const idiom = proverbs?.filter((idm) => idm.turu2 === "Deyim");
 
