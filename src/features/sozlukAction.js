@@ -15,10 +15,11 @@ export function fetchTdkSearching(searching) {
       dispatch(getTdkSuccess(data));
     } catch (error) {
       dispatch(getTdkFailure());
+      console.log(error)
     }
   };
 }
-console.log(tdkAllApi);
+
 export function fetchTdk(num) {
   return async (dispatch) => {
     dispatch(getTdk());
