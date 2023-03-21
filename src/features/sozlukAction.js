@@ -11,7 +11,7 @@ export function fetchTdkSearching(searching) {
   return async (dispatch) => {
     dispatch(getTdk());
     try {
-      const data  = await tdkAllApi(searching);
+      const data  = await tdkAllApi(searching,"/");
       dispatch(getTdkSuccess(data));
     } catch (error) {
       dispatch(getTdkFailure());
@@ -24,7 +24,7 @@ export function fetchTdk(num) {
     dispatch(getTdk());
     try {
       const { data } = await axios.get(
-        `https://sozluk.gov.tr/gts_id?id=${num}`
+        `/gts_id?id=${num}`
       );
       dispatch(getTdkSuccess(data[0]));
     } catch (error) {
@@ -37,7 +37,7 @@ export function fetchTdkFav(num) {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(
-        `https://sozluk.gov.tr/gts_id?id=${num}`
+        `/gts_id?id=${num}`
       );
       dispatch(getFavWord(data));
     } catch (error) {
