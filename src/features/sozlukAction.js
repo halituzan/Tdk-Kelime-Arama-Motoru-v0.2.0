@@ -11,7 +11,7 @@ export function fetchTdkSearching(searching) {
   return async (dispatch) => {
     dispatch(getTdk());
     try {
-      const data = await tdkAllApi(searching, "/api/");
+      const data = await tdkAllApi(searching, "/");
       dispatch(getTdkSuccess(data));
     } catch (error) {
       dispatch(getTdkFailure());
