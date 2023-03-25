@@ -11,11 +11,11 @@ export function fetchTdkSearching(searching) {
   return async (dispatch) => {
     dispatch(getTdk());
     try {
-      const data = await tdkAllApi(searching, "/");
+      const data = await tdkAllApi(searching);
       dispatch(getTdkSuccess(data));
     } catch (error) {
       dispatch(getTdkFailure());
-      console.log(error)
+      console.log(error);
     }
   };
 }

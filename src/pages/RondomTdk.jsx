@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 
 export default function RondomTdk() {
   const { soz } = useSelector(sozlukSelector).tdkSozluk;
-  console.log(soz);
+
   return (
     <div className="w-100 d-flex flex-column justify-content-between">
       <div className="mobile-wrapper">
