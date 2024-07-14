@@ -20,6 +20,7 @@ code {
 .App {
   margin: 0;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 .button-review {
@@ -30,7 +31,7 @@ code {
 }
 .nav-link:focus,
 .nav-link:hover {
-  color: black !important;
+  color: rgb(187, 187, 187) !important;
 }
 .nav-item .active {
   color: #198754 !important;

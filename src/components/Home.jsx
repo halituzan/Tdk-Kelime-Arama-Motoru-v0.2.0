@@ -22,10 +22,9 @@ export default function Home() {
           Veri Çekilemedi
         </div>
       );
-    console.log(soz);
 
     return (
-      <div>
+      <div className='container'>
         {soz?.word ? (
           <Alert
             variant='success'
@@ -49,7 +48,7 @@ export default function Home() {
         ) : (
           ""
         )}
-        {soz?.means ? <h3 className='text-center'> Anlamlar</h3> : ""}
+        {soz?.means && <h3 className='text-center'> Anlamlar</h3>}
         <div className='row d-flex justify-content-center pb-3'>
           {soz?.means?.length >= 0
             ? soz?.means.map((mean, index) => {
@@ -57,8 +56,8 @@ export default function Home() {
                   <div className='flip-card m-1' key={index}>
                     <div className='flip-card-inner'>
                       <Card
-                        bg='success'
-                        text='white'
+                        bg='white'
+                        text='black'
                         className='mb-2 col-11 col-sm-5 border-0 col-md-3 col-lg-2 m-1 d-flex justify-content-center align-items-center flip-card-front'
                       >
                         <Card.Body className='d-flex align-items-center justify-content-center'>
@@ -127,24 +126,20 @@ export default function Home() {
           </div>
 
           {/* Derleme Sözlüğü */}
+
           {soz?.compilation ? (
-            <h3 className='text-center mt-5'> Yöresel Derlemeler</h3>
-          ) : (
-            ""
-          )}
-          {soz?.compilation ? (
-            <div className='derlemeler d-flex justify-content-center'>
+            <div className='derlemeler d-flex justify-content-center w-100 flex-grow-1  mt-5'>
               <Tab.Container
                 id='left-tabs-example'
                 defaultActiveKey={soz?.compilation[0]?.madde_id}
               >
-                <Row>
+                <Row className='w-100'>
                   <Col sm={3}>
                     <Nav variant='pills' className='flex-column bg-dark'>
                       {soz?.compilation?.map((comp) => (
                         <Nav.Item
                           key={comp?.madde_id}
-                          variant='dark'
+                          variant='light'
                           className='bg-none border-bottom'
                         >
                           <Nav.Link
@@ -157,27 +152,34 @@ export default function Home() {
                   </Col>
                   <Col
                     sm={9}
-                    className='d-flex justify-content-center align-items-start pt-4 text-light bg-success'
+                    className='d-flex flex-column justify-content-start align-items-start pt-1 text-light bg-white'
                   >
-                    <Tab.Content>
+                    {soz?.compilation && (
+                      <h3 className='text-center text-dark w-100'>
+                        {" "}
+                        Yöresel Derlemeler
+                      </h3>
+                    )}
+                    <Tab.Content className='w-100'>
                       {soz?.compilation?.map((comp, index) => (
                         <Tab.Pane
                           key={index}
                           eventKey={comp?.madde_id}
-                          className='text-center'
+                          className='text-center  text-dark'
                         >
                           <span className='fs-1 text-dark'>
                             Bu yörede/yörelerde{" "}
-                            <span className='fst-italic fw-bold '>
-                              {soz?.word}
-                            </span>{" "}
-                            kelimesinin anlamı{" "}
+                            <span className='fst-italic fw-bold  text-dark'>
+                              {soz?.word}{" "}
+                            </span>
+                            kelimesinin anlamı
                           </span>
-                          <h2 className='my-5 p-5 border mx-3'>
-                            {" "}
-                            {comp?.anlam}{" "}
+                          <h2 className='my-5 p-2 border mx-3'>
+                            {comp?.anlam}
                           </h2>
-                          <p>Eser Adı: {comp?.eser_ad}</p>
+                          <p className='text-black'>
+                            Eser Adı: {comp?.eser_ad}
+                          </p>
                         </Tab.Pane>
                       ))}
                     </Tab.Content>
@@ -202,9 +204,14 @@ export default function Home() {
           className='text-light d-flex justify-content-center w-100 h-100 p-5'
           style={{ minHeight: "82vh" }}
         >
-          <h2>
-            Lütfen kelime araması yapmak için yukarıdaki arama formunu kullanın
-          </h2>
+          {soz == undefined ? (
+            <h2>Aradığınız Kelime Bulunmamaktadır</h2>
+          ) : (
+            <h2>
+              Lütfen kelime araması yapmak için yukarıdaki arama formunu
+              kullanın
+            </h2>
+          )}
         </div>
       )}
     </div>

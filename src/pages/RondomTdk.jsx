@@ -1,10 +1,9 @@
 import React from "react";
-import Search from "../components/Search";
 import { useSelector } from "react-redux";
-import { sozlukSelector } from "../features/sozlukSlice";
-import Home from "../components/Home";
 import Footer from "../components/Footer";
-import axios from "axios";
+import Home from "../components/Home";
+import Search from "../components/Search";
+import { sozlukSelector } from "../features/sozlukSlice";
 
 export default function RondomTdk() {
   const { soz } = useSelector(sozlukSelector).tdkSozluk;
