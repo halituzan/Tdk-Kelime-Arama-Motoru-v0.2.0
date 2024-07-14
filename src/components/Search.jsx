@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Form, InputGroup, Button } from "react-bootstrap";
-import { fetchTdk, fetchTdkSearching } from "../features/sozlukAction";
+import { Button, Form, InputGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchTdk, fetchTdkSearching } from "../features/sozlukAction";
 
 export default function Search({ soz }) {
   const [searching, setSearching] = useState("");
+  const [searchList, setSearchList] = useState([]);
+  console.log(searchList);
+
   const dispatch = useDispatch();
   const handleKeyPress = (e) => {
     let key = e.keyCode || e.which;
@@ -31,8 +34,24 @@ export default function Search({ soz }) {
     }
   };
 
+  // const handler = async () => {
+  //   for (let i = 0; i < 10; i++) {
+  //     axios.get(`https://sozluk.gov.tr/gts_id?id=${i}`).then(async (res) => {
+  //       console.log(res.data);
+
+  //       await tdkAllApi(res.data[0]?.madde).then((r) => {
+  //         console.log(r);
+
+  //          setSearchList((prev) => [...prev, r?.data]);
+  //       });
+  //     });
+  //   }
+  // };
+
   return (
     <div className="w-100 mobile-search p-4 m-0 bg-dark bg-gradient row d-flex justify-content-center">
+      {/* <button onClick={handler}>Çek</button> */}
+
       {provbs?.length > 0 ? (
         <Button variant="success" className="mx-1 my-1 col-12 col-sm-2">
           <Link to="/proverbs" className="text-light">
